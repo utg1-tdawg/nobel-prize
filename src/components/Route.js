@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 
-const Route = ({ path, children }) => {
-  const [render, setRender] = useState(false);
+const Route = ({ path, children, activeCategory }) => {
+  const category = path.slice(1);
 
-  useEffect(() => {
-    window.addEventListener("popstate", () => {
-      window.location.pathname === path ? setRender(true) : setRender(false);
-    });
-  }, []);
-  return render && children;
+  return activeCategory === category && children;
 };
 
-export default Route;
+const mapStateToProps = (state) => {
+  return { activeCategory: state.activeCategory };
+};
+
+export default connect(mapStateToProps)(Route);

@@ -1,17 +1,32 @@
 import React from "react";
+import { connect } from "react-redux";
+import { changeActiveCategory } from "../actions";
 
-const Link = ({ path, displayName, displayUrl }) => {
+const Link = ({
+  displayName,
+  displayUrl,
+  changeActiveCategory,
+  activeCategory,
+}) => {
+  const category = displayUrl.slice(1);
+
   const onAnchorLink = () => {
     window.history.pushState(null, null, displayUrl);
 
-    const navEvent = new PopStateEvent("popstate");
-    window.dispatchEvent(navEvent);
+    changeActiveCategory(category);
   };
   return (
-    <div className="item" onClick={onAnchorLink}>
+    <div
+      className={activeCategory === category ? "active item" : "item"}
+      onClick={onAnchorLink}
+    >
       {displayName}
     </div>
   );
 };
 
-export default Link;
+const mapStateToProps = (state) => {
+  return { activeCategory: state.activeCategory };
+};
+
+export default connect(mapStateToProps, { changeActiveCategory })(Link);

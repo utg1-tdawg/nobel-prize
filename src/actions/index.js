@@ -14,3 +14,7 @@ export const fetchNobelPrizes = () => {
     });
   };
 };
+
+export const changeActiveCategory = (category) => {
+  return { type: "CHANGE_ACTIVE_CATEGORY", payload: category };
+};
