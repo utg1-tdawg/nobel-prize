@@ -1,16 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import NobelPrize from "./NobelPrize";
 
-const Category = ({ name, categoryNobelPrizes }) => {
-  useEffect(() => {
-    console.log(categoryNobelPrizes);
-
-    for (let i in categoryNobelPrizes) {
-      console.log(categoryNobelPrizes[i].laureates);
-    }
-  }, []);
-
+const Category = ({ categoryNobelPrizes }) => {
   const renderedCategoryNobelPrizes = categoryNobelPrizes.map(
     (categoryNobelPrize, id) => (
       <NobelPrize

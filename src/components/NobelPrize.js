@@ -1,26 +1,27 @@
 import React from "react";
 
 const NobelPrize = ({ id, awardYear, laureates, prizeAmount }) => {
-  const isOrg = "orgName" in laureates[0]; // this logic doesnt work. can have org and human in same prize
-
-  const renderedLaureates = laureates.map((laureate, id) => (
-    <div key={id}>
-      {/* <div className="description">
-        {isOrg ? laureate.orgName.en : laureate.fullName.en}
-      </div> */}
-      {/* <div className="description">{laureate.motivation}</div> */}
+  const renderedLaureates = laureates.map((laureate) => (
+    <div key={laureate.id}>
+      <div className="description">
+        Name:{" "}
+        {"fullName" in laureate ? laureate.fullName.en : laureate.orgName.en}
+      </div>
+      <div className="description">Motivation: {laureate.motivation.en}</div>
+      <br />
     </div>
   ));
 
   return (
     <div className="card">
       <div className="content">
-        <div className="header">{id}</div>
-        <div className="description">Award Year: {awardYear}</div>
+        <div className="header">{awardYear}</div>
         <div className="description">
           Prize Amount: ${prizeAmount.toLocaleString()}
         </div>
-        {/* {renderedLaureates} */}
+        <br />
+        <div className="header">Laureate(s)</div>
+        {renderedLaureates}
       </div>
     </div>
   );
