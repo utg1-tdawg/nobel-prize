@@ -6,10 +6,10 @@ const NavBar = () => {
     <div className="ui six item menu">
       <Link displayUrl="/physics" displayName="Physics" />
       <Link displayUrl="/chemistry" displayName="Chemistry" />
-      <Link displayUrl="/medicine" displayName="Medicine" />
+      <Link displayUrl="/medicine" displayName="Physiology or Medicine" />
       <Link displayUrl="/literature" displayName="Literature" />
       <Link displayUrl="/peace" displayName="Peace" />
-      <Link displayUrl="/economics" displayName="Economics" />
+      <Link displayUrl="/economics" displayName="Economic Sciences" />
     </div>
   );
 };
